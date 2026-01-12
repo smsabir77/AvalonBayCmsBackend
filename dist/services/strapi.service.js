@@ -26,8 +26,7 @@ async function fetchAppConfigFromStrapi() {
     const item = res.data.data[0];
     let logo = undefined;
     if (item.logo?.length) {
-        console.log("res.data.data[0];", res.data.data[0]);
-        logo = `${env_1.env.strapiUrl}${item.logo[0].url}`;
+        logo = `${item.logo[0].url}`;
     }
     return {
         appName: item.appName,

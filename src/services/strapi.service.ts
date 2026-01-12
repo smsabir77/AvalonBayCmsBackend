@@ -28,8 +28,11 @@ export async function fetchAppConfigFromStrapi(): Promise<AppConfig | null> {
 let logo: string | undefined = undefined;
 
 if (item.logo?.length) {
-console.log("res.data.data[0];",res.data.data[0])
-  logo = `${env.strapiUrl}${item.logo[0].url}`;
+   const url = item.logo[0].url;
+
+  logo = url.startsWith("http")
+    ? url
+    : `${process.env.STRAPI_URL}${url}`;
 }
 
 
